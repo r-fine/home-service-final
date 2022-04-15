@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -39,6 +41,17 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'is_verified' => 'boolean',
         'email_verified_at' => 'datetime',
     ];
+
+    public function providerProfile()
+    {
+        return $this->hasOne(ProviderProfile::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(ReviewRating::class);
+    }
 }
