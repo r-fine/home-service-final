@@ -190,7 +190,7 @@
             <div class="container text-center text-md-start mt-5">
                 <div class="row mt-3">
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4"><i class="bi bi-gem"></i> Tasker 470</h6>
+                        <h6 class="text-uppercase fw-bold mb-4"><i class="bi bi-gem"></i> Home Service 470</h6>
                     </div>
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">Products</h6>
