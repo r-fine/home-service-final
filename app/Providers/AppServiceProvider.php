@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\OrderItem;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,7 +28,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $categories = Category::all();
-        view()->share('categories', $categories);
+        $item_count = 0;
+
+        if (Auth::check()) {
+            $item_count = OrderItem::where([
+                ['user_id', Auth::user()->id],
+                ['is_ordered', 0]
+            ])->count();
+        }
+
+
+        view()->share(compact('categories', 'item_count'));
 
         Paginator::useBootstrapFive();
     }

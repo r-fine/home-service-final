@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }} - @yield('title')</title>
+    <title>@yield('title')</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <meta name="referrer" content="no-referrer-when-downgrade">
     <link href="{{  asset('css/base.css') }}" rel="stylesheet" type="text/css" />
+    
 </head>
 
 <body>
@@ -157,7 +158,7 @@
     <div style="position:fixed;right:1%;top:46%;">
         <a type="button" href="{{ route('order.create') }}" class="d-flex btn btn-warning justify-content-center align-items-center" id="Order"
             style="height: 75px;width: 75px;">
-            <sup class="text-danger fw-bold p-0 m-0 fs-6">2</sup>
+            <sup class="text-danger fw-bold p-0 m-0 fs-6">{{ $item_count }}</sup>
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bag-x me-1"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"

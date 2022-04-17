@@ -11,12 +11,9 @@
             link that will allow you to choose a new one.
         </div>
 
-        @if (Session::has('status'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ Session::get('status') }}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+        <x-auth-session-status class="tw-mb-4" :status="session('status')" />
+
+        <x-auth-validation-errors class="tw-mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf

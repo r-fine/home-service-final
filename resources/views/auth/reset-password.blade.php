@@ -29,7 +29,7 @@
             <div class="form-group mt-4">
                 <label for="password_confirmation">Confirm Password</label>
 
-                <input class="block mt-1 w-full" type="password" name="password_confirmation" required />
+                <input class="form-control" type="password" name="password_confirmation" required />
             </div>
 
             <div class="row justify-content-xs-center mt-3 mx-auto">
