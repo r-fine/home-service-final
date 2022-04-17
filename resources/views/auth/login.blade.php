@@ -1,5 +1,5 @@
 @extends('../layouts/base')
-@section('title', 'Home')
+@section('title', 'Login')
 
 @section('content')
 
@@ -9,15 +9,25 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Email:</label>
                 <input type="email" name="email" class="form-control @error('email') border border-danger @enderror"
                     placeholder="e.g. name@example.com" value="{{ old('email') }}" required autofocus />
+                @error('email')
+                <div class="fs-6 text-danger mt-2">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="form-group mt-4">
-                <label for="password">Password</label>
+                <label for="password">Password:</label>
                 <input type="password" name="password"
                     class="form-control @error('password') border border-danger @enderror"
                     placeholder="enter your password" required autocomplete="current-password" />
+                @error('password')
+                <div class="fs-6 text-danger mt-2">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
             <div class="form-group mt-4">
                 <label for="remember_me">
