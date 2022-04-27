@@ -45,7 +45,7 @@ class ShopController extends Controller
                 ['service_id', $service->id],
                 ['is_ordered', true],
                 ['is_reviewable', true],
-            ])->exists();;
+            ])->exists();
         }
 
         return view('shop.show_service', compact('title', 'service', 'my_review', 'all_reviews', 'reviewable'));
@@ -57,5 +57,22 @@ class ShopController extends Controller
         $title = $category->title;
         $services = Service::where('category_id', $category->id)->simplePaginate(4);
         return view('shop.category_list', compact('title', 'category', 'services'));
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'q' => 'required|min:3',
+        ]);
+
+        $q = $request->input('q');
+
+        $services = Service::where('title', 'like', "%$q%")
+            ->orWhereHas('category', function ($query) use ($q) {
+                $query->where('title', 'like', "%q%");
+            })
+            ->paginate(10);
+
+        return view('shop.search_results', compact('services'));
     }
 }

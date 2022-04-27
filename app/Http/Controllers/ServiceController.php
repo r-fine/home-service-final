@@ -29,22 +29,26 @@ class ServiceController extends Controller
             'title' => 'required',
             'description' => 'required',
             'pricing' => 'required',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
         ]);
 
-        $imageName = time() . "." . $request->slug . "." . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images/service'), $imageName);
 
         $service = new Service();
         $service->title = $request->title;
         $service->slug = Str::slug($request->title);
         $service->description = $request->description;
         $service->pricing = $request->pricing;
-        $service->image = $imageName;
         $service->category_id = $request->category_id;
         $service->save();
 
-        return back()->with('success', 'Service added successfully');
+        if ($request->image) {
+            $imageName = time() . "." . $request->slug . "." . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images/service'), $imageName);
+            $service->image = $imageName;
+            $service->save();
+        }
+
+        return redirect()->route('admin.services.index')->with('success', 'Service added successfully');
     }
 
     public function edit(Service $service)
