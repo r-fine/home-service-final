@@ -8,6 +8,7 @@
         <hr>
         <h1 class="text-center text-primary mb-3">Service List</h1>
         <hr>
+        <x-message-success />
         <div>
             <span class="d-flex justify-content-end mt-2">
                 <a href="{{ route('admin.services.create') }}" class="btn btn-sm btn-primary fs-6">

@@ -14,8 +14,10 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
     <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- CSS -->
     <link href="{{  asset('css/base.css') }}" rel="stylesheet" type="text/css" />
-    
+    <!-- JS -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -43,13 +45,15 @@
                             <li class="dropdown-submenu">
                                 @if ($cat->isParent())
                                 <a class="dropdown-item">
-                                    {{ $cat->title }}   @if ($cat->hasChildren())<span class="text-muted" style="font-size: 0.8rem"><i class="bi bi-caret-right-fill"></i></span>@endif
+                                    {{ $cat->title }} @if ($cat->hasChildren())<span class="text-muted"
+                                        style="font-size: 0.8rem"><i class="bi bi-caret-right-fill"></i></span>@endif
                                 </a>
                                 <hr class="dropdown-divider" />
                                 @if ($cat->hasChildren())
                                 <ul class="dropdown-menu children">
                                     @foreach ($cat->children as $child)
-                                    <a href="{{ route('category.list', $child) }}" class="dropdown-item">{{ $child->title }}</a>
+                                    <a href="{{ route('category.list', $child) }}"
+                                        class="dropdown-item">{{ $child->title }}</a>
                                     @endforeach
                                 </ul>
                                 @endif
@@ -156,7 +160,8 @@
     <!-- navbar end -->
 
     <div style="position:fixed;right:1%;top:46%;">
-        <a type="button" href="{{ route('order.create') }}" class="d-flex btn btn-warning justify-content-center align-items-center" id="Order"
+        <a type="button" href="{{ route('order.create') }}"
+            class="d-flex btn btn-warning justify-content-center align-items-center" id="Order"
             style="height: 75px;width: 75px;">
             <sup class="text-danger fw-bold p-0 m-0 fs-6">{{ $item_count }}</sup>
             <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bag-x me-1"

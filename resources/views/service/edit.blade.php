@@ -39,7 +39,7 @@
             </div>
             <div class="form-group my-2">
                 <label for="description">Service description<span class=text-danger>*</span></label>
-                <textarea class="form-control @error('description') border border-danger @enderror" name="description" id="" cols="30" rows="10" placeholder="write description here...">{{ $service->description }}</textarea>
+                <textarea id="description-editor" class="form-control @error('description') border border-danger @enderror" name="description" id="" cols="30" rows="10" placeholder="write description here...">{{ $service->description }}</textarea>
                 @error('description')
                 <div class="fs-6 text-danger mt-2">
                     {{ $message }}
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group my-2">
                 <label for="pricing">Service pricing<span class=text-danger>*</span></label>
-                <textarea class="form-control @error('pricing') border border-danger @enderror" name="pricing" id="" cols="30" rows="10" placeholder="write pricing here...">{{ $service->pricing }}</textarea>
+                <textarea id="pricing-editor" class="form-control @error('pricing') border border-danger @enderror" name="pricing" id="" cols="30" rows="10" placeholder="write pricing here...">{{ $service->pricing }}</textarea>
                 @error('pricing')
                 <div class="fs-6 text-danger mt-2">
                     {{ $message }}
@@ -73,4 +73,19 @@
     </div>
 </section>
 
+@endsection
+
+@section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#description-editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        ClassicEditor
+            .create( document.querySelector( '#pricing-editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

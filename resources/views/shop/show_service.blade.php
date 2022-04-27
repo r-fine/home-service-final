@@ -32,7 +32,7 @@
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                {{ $service->description }}
+                                {!! $service->description !!}
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                {{ $service->pricing }}
+                                {!! $service->pricing !!}
                             </div>
                         </div>
                     </div>
