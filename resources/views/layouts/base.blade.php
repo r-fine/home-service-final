@@ -64,7 +64,7 @@
                     </li>
                     <!-- Search Bar -->
                     <li class="col-md-10 col-lg-7 col-xl-9 col-xxl-11">
-                        <form method="GET" action="" class="d-flex">
+                        <form method="GET" action="{{ route('search') }}" class="d-flex">
                             <input class="form-control me-2" name="q" type="search" placeholder="Find a service..."
                                 aria-label="Search">
                             <button class="btn btn-outline-dark" type="submit" style="width: 120px;"><i

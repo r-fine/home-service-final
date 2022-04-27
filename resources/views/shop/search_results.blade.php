@@ -7,7 +7,9 @@
         <div class="container mb-4">
             <div class="row justify-content-start">
                 <div class="col-9 col-sm-4">
-                    <span class="text-primary fs-4 fs-sm-3 fw-bold">All results</span>
+                    <span class="text-primary fs-5 fs-sm-3 fw-bold">All results related to "{{$q}}"</span>
+                    <br>
+                    <span class="text-muted">showing {{ $services->count() }} results</span>
                     <hr class="d-sm-none">
                 </div>
             </div>

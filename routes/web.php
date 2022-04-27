@@ -16,6 +16,7 @@ require __DIR__ . '/admin.php';
 Route::get('/', [ShopController::class, 'index'])->name('home');
 Route::get('/{service:slug}', [ShopController::class, 'showService'])->name('show.service');
 Route::get('/category/{category}', [ShopController::class, 'categoryList'])->name('category.list');
+Route::get('/services/search', [ShopController::class, 'search'])->name('search');
 
 // Routes for ReviewRating
 Route::name('review.')->group(function () {

@@ -68,11 +68,12 @@ class ShopController extends Controller
         $q = $request->input('q');
 
         $services = Service::where('title', 'like', "%$q%")
+            ->with('category')
             ->orWhereHas('category', function ($query) use ($q) {
-                $query->where('title', 'like', "%q%");
+                $query->where('title', 'like', "%$q%");
             })
             ->paginate(10);
 
-        return view('shop.search_results', compact('services'));
+        return view('shop.search_results', compact('services', 'q'));
     }
 }
