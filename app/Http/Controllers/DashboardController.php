@@ -16,7 +16,19 @@ class DashboardController extends Controller
     public function sProvider()
     {
         if (Auth::user()->is_verified == 1) {
-            return view('s_provider.s_provider_homepage');
+            $upcoming = OrderItem::where([
+                ['provider_id', Auth::user()->providerProfile->id],
+                ['status', 'Accepted'],
+            ])->count();
+            $ongoing = OrderItem::where([
+                ['provider_id', Auth::user()->providerProfile->id],
+                ['status', 'Preparing'],
+            ])->count();
+            $completed = OrderItem::where([
+                ['provider_id', Auth::user()->providerProfile->id],
+                ['status', 'Completed'],
+            ])->count();
+            return view('s_provider.s_provider_homepage', compact('upcoming', 'ongoing', 'completed'));
         } else {
             $categories = Category::whereNull('parent_id')->get();
             if (!Auth::user()->providerProfile) {

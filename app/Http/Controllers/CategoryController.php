@@ -27,20 +27,23 @@ class CategoryController extends Controller
             'parent_id' => 'nullable',
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            'image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048'
         ]);
-
-        $imageName = time() . "." . $request->slug . "." . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images/category'), $imageName);
 
         // Category::create($request->all());
         $category = new Category();
         $category->title = $request->title;
         $category->slug = Str::slug($request->title);
         $category->description = $request->description;
-        $category->image = $imageName;
         $category->parent_id = $request->parent_id;
         $category->save();
+
+        if ($request->image) {
+            $imageName = time() . "." . $request->slug . "." . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images/category'), $imageName);
+            $category->image = $imageName;
+            $category->save();
+        }
 
         return back()->with('success', 'Category added successfully');
     }

@@ -11,7 +11,7 @@
                         <h4 class="card-title">Upcoming Tasks</h4>
                     </div>
                     <div class="card-body d-flex justify-content-center align-items-center">
-                        <h1 class="card-title">0</h1>
+                        <h1 class="card-title">{{ $upcoming }}</h1>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <h4 class="card-title">Ongoing Tasks</h4>
                     </div>
                     <div class="card-body d-flex justify-content-center align-items-center">
-                        <h1 class="card-title">0</h1>
+                        <h1 class="card-title">{{ $ongoing }}</h1>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                         <h4 class="card-title">Completed Tasks</h4>
                     </div>
                     <div class="card-body d-flex justify-content-center align-items-center">
-                        <h1 class="card-title">0</h1>
+                        <h1 class="card-title">{{ $completed }}</h1>
                     </div>
                 </div>
             </div>

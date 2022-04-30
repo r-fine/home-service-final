@@ -41,3 +41,15 @@ Route::prefix('admin')->group(function () {
         });
     });
 });
+
+Route::prefix('provider')->group(function () {
+    Route::name('provider.')->group(function () {
+        Route::prefix('order')->group(function () {
+            Route::name('order.')->group(function () {
+                Route::group(['middleware' => ['auth', 'role:s_provider']], function () {
+                    Route::get('/complete/{item}', [OrderItemController::class, 'orderStatusCompleted'])->name('complete');
+                });
+            });
+        });
+    });
+});

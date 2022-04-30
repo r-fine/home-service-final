@@ -36,7 +36,7 @@
                         <a href="#" type="button"
                             class="btn btn-sm btn-outline-success">undo</a>
                         @else
-                        <a href="#" type="button"
+                        <a href="{{ route('provider.order.complete', $task) }}" type="button"
                             class="btn btn-sm btn-outline-primary">completed</a>
                         @endif
                     </td>
